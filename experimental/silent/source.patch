@@ -1,18 +1,23 @@
 diff --git a/common/src/main/AndroidManifest.xml b/common/src/main/AndroidManifest.xml
-index acceb5c..d1f23fc 100644
+index acceb5c..8fbdc84 100644
 --- a/common/src/main/AndroidManifest.xml
 +++ b/common/src/main/AndroidManifest.xml
-@@ -94,6 +94,14 @@
+@@ -84,7 +84,7 @@
+                 android:name="android.support.FILE_PROVIDER_PATHS"
+                 android:resource="@xml/update_apk_paths" />
+         </provider>
+-        <activity android:name="com.shilapi.xcertplay.DiPlayActivity"
++        <activity android:name="com.shilapi.xcertplay.DiPlayActivity" android:icon="@drawable/starwish_launcher" android:roundIcon="@drawable/starwish_launcher"
+             android:exported="true" android:launchMode="singleTop"
+             android:resizeableActivity="true"
+             android:configChanges="density|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+@@ -94,6 +94,10 @@
                  <category android:name="android.intent.category.LAUNCHER" />
              </intent-filter>
          </activity>
 +        <activity-alias android:name="com.shilapi.xcertplay.StarwishDock"
 +            android:targetActivity="com.shilapi.xcertplay.DiPlayActivity" android:exported="true"
 +            android:label="星愿控制栏" android:icon="@drawable/ic_starwish_dock">
-+            <intent-filter>
-+                <action android:name="android.intent.action.MAIN" />
-+                <category android:name="android.intent.category.LAUNCHER" />
-+            </intent-filter>
 +        </activity-alias>
          <service android:name="com.shilapi.xcertplay.DiPlaySessionService"
              android:exported="false" android:foregroundServiceType="connectedDevice|microphone|location|mediaPlayback" />
@@ -274,6 +279,13 @@ index f31305d..ba64b02 100644
          if (event.action != KeyEvent.ACTION_DOWN && event.action != KeyEvent.ACTION_UP) return false
          val down = event.action == KeyEvent.ACTION_DOWN
          val physicalKey = PhysicalWheelKey(event.deviceId, event.keyCode, event.scanCode)
+diff --git a/common/src/main/res/drawable-v33/starwish_launcher.xml b/common/src/main/res/drawable-v33/starwish_launcher.xml
+new file mode 100644
+index 0000000..1bb11cb
+--- /dev/null
++++ b/common/src/main/res/drawable-v33/starwish_launcher.xml
+@@ -0,0 +1 @@
++<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android"><background android:drawable="@android:color/transparent"/><foreground><inset android:inset="16%" android:drawable="@drawable/ic_carplay"/></foreground><monochrome><inset android:inset="16%" android:drawable="@drawable/ic_starwish_dock"/></monochrome></adaptive-icon>
 diff --git a/common/src/main/res/drawable/ic_starwish_dock.xml b/common/src/main/res/drawable/ic_starwish_dock.xml
 new file mode 100644
 index 0000000..e1da7bf
@@ -287,6 +299,13 @@ index 0000000..e1da7bf
 +        android:pathData="M25.8,9.7A11.7,11.7 0,1 0,25.8 22.3" />
 +    <path android:fillColor="@color/carxy_dock_ink" android:pathData="M13,10.8Q13,10.1 13.7,10.6L21,15.4Q21.9,16 21,16.6L13.7,21.4Q13,21.9 13,21.2Z" />
 +</vector>
+diff --git a/common/src/main/res/drawable/starwish_launcher.xml b/common/src/main/res/drawable/starwish_launcher.xml
+new file mode 100644
+index 0000000..0dc5bba
+--- /dev/null
++++ b/common/src/main/res/drawable/starwish_launcher.xml
+@@ -0,0 +1 @@
++<layer-list xmlns:android="http://schemas.android.com/apk/res/android"><item android:drawable="@drawable/ic_carplay"/></layer-list>
 diff --git a/common/src/main/res/values-night/carxy_dock.xml b/common/src/main/res/values-night/carxy_dock.xml
 new file mode 100644
 index 0000000..17ed368
@@ -314,3 +333,33 @@ index 36b0f59..61df5ca 100644
              versionNameSuffix = "-hud-test"
          }
          release {
+diff --git a/mobile/src/debug/AndroidManifest.xml b/mobile/src/debug/AndroidManifest.xml
+index bad1bcb..3bcb8a2 100644
+--- a/mobile/src/debug/AndroidManifest.xml
++++ b/mobile/src/debug/AndroidManifest.xml
+@@ -1,7 +1,7 @@
+ <manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+     <uses-permission android:name="android.permission.BYDAUTO_INSTRUMENT_COMMON" />
+ <queries><package android:name="com.byd.clusterdebug" /></queries>
+-    <application android:label="DiPlay HUD Test" tools:replace="android:label">
++    <application android:label="CarPlay" tools:replace="android:label">
+     <receiver android:name="com.shilapi.xcertplay.hud.StarterBridgeReceiver" android:exported="true" android:permission="android.permission.DUMP" />
+     <activity android:name="com.shilapi.xcertplay.hud.StandaloneHudDemoActivity" android:exported="true" android:permission="android.permission.DUMP" />
+     </application></manifest>
+diff --git a/mobile/src/main/AndroidManifest.xml b/mobile/src/main/AndroidManifest.xml
+index 14d3a17..59213be 100644
+--- a/mobile/src/main/AndroidManifest.xml
++++ b/mobile/src/main/AndroidManifest.xml
+@@ -8,10 +8,10 @@
+         android:hasFragileUserData="true"
+         android:fullBackupContent="@xml/backup_rules"
+         android:dataExtractionRules="@xml/data_extraction_rules"
+-        android:icon="@drawable/ic_carplay"
++        android:icon="@drawable/ic_starwish_dock"
+         android:label="@string/app_name"
+         android:localeConfig="@xml/locales_config"
+-        android:roundIcon="@drawable/ic_carplay"
++        android:roundIcon="@drawable/ic_starwish_dock"
+         android:supportsRtl="true"
+         android:resizeableActivity="true"
+         android:theme="@style/Theme.Xcertplay">
