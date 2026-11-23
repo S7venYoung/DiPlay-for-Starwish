@@ -1,4 +1,9 @@
-# CarUp for Starwish
+# DiPlay for Starwish
+
+吉利星愿 DiPlay 定制项目。星愿静默连接版的[公开 APK](experimental/silent/DiPlay-Starwish.apk) 和[源码补丁](experimental/silent/source.patch)位于 experimental/silent。
+
+## 早期 CarXY 共存版
+
 基于 CarXY 4.0 共存测试包（com.carup.xyw）的增量定制。上一版已在星愿实车确认底部控制栏显示正常。新版本首次读取按键时预设下一首 347、上一首 346，跳过已有映射和占用的键值。之后仍可学习和清除按键。其它键等待实测。
 无线会话丢失时新增 StarwishReconnect 日志，用于识别触发重连的调用路径。重连原因尚待车辆日志确认。停车复现后可使用 adb logcat -d -s StarwishReconnect:I 获取记录，并结合应用诊断报告判断断开阶段。
 参考 HuangYingNing/DiPlay 的 f986e35，主要关注 Flyme Auto 热点网卡识别、蓝牙启动和连接诊断。没有移植未经本车确认的接口。
