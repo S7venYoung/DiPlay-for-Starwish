@@ -281,11 +281,11 @@ index f31305d..ba64b02 100644
          val physicalKey = PhysicalWheelKey(event.deviceId, event.keyCode, event.scanCode)
 diff --git a/common/src/main/res/drawable-v33/starwish_launcher.xml b/common/src/main/res/drawable-v33/starwish_launcher.xml
 new file mode 100644
-index 0000000..1bb11cb
+index 0000000..96bee27
 --- /dev/null
 +++ b/common/src/main/res/drawable-v33/starwish_launcher.xml
 @@ -0,0 +1 @@
-+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android"><background android:drawable="@android:color/transparent"/><foreground><inset android:inset="16%" android:drawable="@drawable/ic_carplay"/></foreground><monochrome><inset android:inset="16%" android:drawable="@drawable/ic_starwish_dock"/></monochrome></adaptive-icon>
++<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android"><background android:drawable="@android:color/transparent"/><foreground><inset android:inset="16%" android:drawable="@drawable/ic_starwish_green"/></foreground><monochrome><inset android:inset="16%" android:drawable="@drawable/ic_starwish_dock"/></monochrome></adaptive-icon>
 diff --git a/common/src/main/res/drawable/ic_starwish_dock.xml b/common/src/main/res/drawable/ic_starwish_dock.xml
 new file mode 100644
 index 0000000..e1da7bf
@@ -299,13 +299,26 @@ index 0000000..e1da7bf
 +        android:pathData="M25.8,9.7A11.7,11.7 0,1 0,25.8 22.3" />
 +    <path android:fillColor="@color/carxy_dock_ink" android:pathData="M13,10.8Q13,10.1 13.7,10.6L21,15.4Q21.9,16 21,16.6L13.7,21.4Q13,21.9 13,21.2Z" />
 +</vector>
+diff --git a/common/src/main/res/drawable/ic_starwish_green.xml b/common/src/main/res/drawable/ic_starwish_green.xml
+new file mode 100644
+index 0000000..d00ba74
+--- /dev/null
++++ b/common/src/main/res/drawable/ic_starwish_green.xml
+@@ -0,0 +1,7 @@
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    android:width="48dp" android:height="48dp" android:viewportWidth="32" android:viewportHeight="32">
++    <path android:fillColor="@android:color/transparent" android:strokeColor="#26B85B"
++        android:strokeWidth="2.4" android:strokeLineCap="round" android:strokeLineJoin="round"
++        android:pathData="M25.8,9.7A11.7,11.7 0,1 0,25.8 22.3" />
++    <path android:fillColor="#26B85B" android:pathData="M13,10.8Q13,10.1 13.7,10.6L21,15.4Q21.9,16 21,16.6L13.7,21.4Q13,21.9 13,21.2Z" />
++</vector>
 diff --git a/common/src/main/res/drawable/starwish_launcher.xml b/common/src/main/res/drawable/starwish_launcher.xml
 new file mode 100644
-index 0000000..0dc5bba
+index 0000000..bec05a2
 --- /dev/null
 +++ b/common/src/main/res/drawable/starwish_launcher.xml
 @@ -0,0 +1 @@
-+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"><item android:drawable="@drawable/ic_carplay"/></layer-list>
++<layer-list xmlns:android="http://schemas.android.com/apk/res/android"><item android:drawable="@drawable/ic_starwish_green"/></layer-list>
 diff --git a/common/src/main/res/values-night/carxy_dock.xml b/common/src/main/res/values-night/carxy_dock.xml
 new file mode 100644
 index 0000000..17ed368
