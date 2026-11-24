@@ -61,7 +61,7 @@ index 1f4aaaa..58c396b 100644
          } catch (error: RuntimeException) {
              StartupDiagnosticSnapshot.launchResult(context, error)
 diff --git a/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt b/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt
-index 1c6e14a..5bbe65f 100644
+index 1c6e14a..b0b8914 100644
 --- a/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt
 +++ b/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt
 @@ -1614,7 +1614,10 @@ open class CarPlayHostActivity : ComponentActivity() {
@@ -75,6 +75,17 @@ index 1c6e14a..5bbe65f 100644
          val physicalKey = Triple(event.deviceId, event.keyCode, event.scanCode)
          val downOrUp = event.action == KeyEvent.ACTION_DOWN || event.action == KeyEvent.ACTION_UP
          if (downOrUp && physicalKey in legacySiriPresses) {
+@@ -5772,6 +5775,10 @@ open class CarPlayHostActivity : ComponentActivity() {
+             appendLog(message)
+             Log.i(TAG, message)
+             videoView?.let { updateVideoLayout(it.width, it.height) }
++        } else if (wirelessEnabled && CarPlayBackgroundSession.active && !isMultiWindowActive() &&
++            display?.width == 1920 && display.height == 968 &&
++            size.width == 1920 && size.height in 968..1080) {
++            appendLog("Starwish: keeping active wireless session across control bar resize")
+         } else {
+             restartCarPlay(
+                 "Display changed ${previous.width}x${previous.height} -> ${size.width}x${size.height}",
 diff --git a/common/src/main/java/com/shilapi/xcertplay/CarPlayMediaKeys.kt b/common/src/main/java/com/shilapi/xcertplay/CarPlayMediaKeys.kt
 index 852ec7a..d46d4e5 100644
 --- a/common/src/main/java/com/shilapi/xcertplay/CarPlayMediaKeys.kt
